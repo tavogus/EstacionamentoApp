@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:estacionamento="http://estacionamento.app.com">
+
+<head>
+	<title>Cadastro de tarifa</title>
+</head>
+
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-10">
+					<h1>Cadastro de tarifa</h1>
+				</div>
+				
+				<div class="col-xs-2">
+					<div class="aw-page-header-controls">
+						<a class="btn  btn-default" th:href="@{/tarifas}">
+							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid">
+	
+		<form method="POST" th:object="${tarifa}" th:action="@{/tarifas/novo}">
+			<estacionamento:message/>
+			
+			<div class="row">
+				<div class="form-group  col-sm-3  bw-required" estacionamento:classforerror="descricao">
+					<label for="descricao" id="descricao" th:field="*{descricao}" class="control-label">Descrição</label>
+					<input type="text" class="form-control" id="descricao" th:field="*{descricao}"/>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-sm-3  form-group  bw-required" estacionamento:classforerror="valor">
+					<label for="valor" class="control-label">Valor</label>
+					<div class="input-group">
+						<div class="input-group-addon">R$</div>
+						<input id="valor" type="text" class="form-control  js-decimal" th:field="*{valor}"/>
+					</div>
+				</div>
+			</div>
+			
+			<button type="submit" class="btn  btn-primary">Salvar</button>
+		</form>
+	</div>
+</section>
+
+</html>

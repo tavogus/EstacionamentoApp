@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:estacionamento="http://estacionamento.algaworks.com"
+	xmlns:data="http://www.thymeleaf.org/extras/data">
+
+<head>
+	<title>Cadastro de movimentacao</title>
+	
+	<link rel="stylesheet" th:href="@{/stylesheets/vendors/easy-autocomplete.min.css}"/>
+	<link rel="stylesheet" th:href="@{/stylesheets/vendors/easy-autocomplete.themes.min.css}"/>
+</head>
+
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-10">
+					<h1>Cadastro de movimentacao</h1>
+				</div>
+				<div class="col-xs-2">
+					<div class="aw-page-header-controls">
+						<a class="btn  btn-default" th:href="@{/movimentacoes}">
+							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid">
+		<form method="POST" th:action="@{/movimentacoes/novo}" th:object="${movimentacao}">
+			<estacionamento:message/>
+		
+			<input type="hidden" th:field="*{codigo}"/>
+			
+			<div class="row">
+				<div class="form-group  col-sm-4  bw-required" estacionamento:classforerror="veiculo.codigo">
+					<label class="control-label" for="placaVeiculo">Veiculo</label>
+					<div class="input-group">
+				      <input id="placaVeiculo" type="text" readonly="readonly" class="form-control" th:field="*{veiculo.placa}" 
+				      	placeholder="Clique na lupa para pesquisar o veiculo"/>
+				      <input id="codigoVeiculo" type="hidden" th:field="*{veiculo}"/>
+				      <span class="input-group-btn">
+				        <button class="btn  btn-default  js-tooltip" type="button" title="Pesquisa avançada"
+				        		data-toggle="modal" data-target="#pesquisaRapidaVeiculos">
+				        	<i class="glyphicon  glyphicon-search"></i>
+				        </button>
+				      </span>
+				    </div>
+				</div>
+			</div>
+			
+			<button type="submit" class="btn  btn-primary">Salvar</button>
+		</form>
+	</div>
+	
+	<th:block th:replace="veiculo/PesquisaRapidaVeiculos :: pesquisaRapidaVeiculos"></th:block>
+</section>
+
+<th:block layout:fragment="javascript-extra">
+	<script th:src="@{/javascripts/vendors/handlebars.min.js}"></script>
+	<script th:src="@{/javascripts/veiculo.pesquisa-rapida.js}"></script>
+
+	<script>
+	$(function() {
+		$('.js-abas-venda a').click(function (e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+	});
+	</script>
+</th:block>
+
+</html>

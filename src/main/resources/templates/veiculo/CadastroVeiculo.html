@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/LayoutPadrao}"
+	xmlns:estacionamento="http://brewer.algaworks.com">
+	
+<head>
+	<title>Cadastro de veiculo</title>
+</head>
+
+<body>
+<section layout:fragment="conteudo">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-10">
+					<h1>Cadastro de veiculo</h1>
+				</div>
+			
+				<div class="col-xs-2">
+					<div class="aw-page-header-controls">
+						<a class="btn  btn-default" th:href="@{/veiculos}">
+							<i class="glyphicon  glyphicon-plus-sign"></i> <span class="hidden-xs  hidden-sm">Pesquisa</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+
+		<form method="POST" th:object="${veiculo}" class="form-vertical  js-form-loading" th:action="@{/veiculos/novo}">
+			<estacionamento:message/>
+			
+			<input type="hidden" th:field="*{codigo}"/>
+	
+			<div class="row">			
+				<div class="col-sm-2 form-group bw-required" estacionamento:classforerror="placa">
+					<label for="placa" class="control-label">Placa</label>
+					<input id="placa" type="text" class="form-control" th:field="*{placa}"/>
+				</div>
+			</div>
+            
+            <div class="row">
+			<div class="col-sm-3 form-group bw-required" estacionamento:classforerror="modelo">
+				<label for="descricao" class="control-label">Modelo</label>
+				<input id="modelo" type="text" class="form-control" th:field="*{modelo}"/>
+			</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-3  form-group  bw-required" estacionamento:classforerror="tarifa">
+					<label for="tarifa" class="control-label">Tarifa</label>
+					<div class="bw-field-action">
+						<select id="tarifa" class="form-control" th:field="*{tarifa}">
+							<option value="">Selecione a tarifa</option>
+							<option th:each="tarifa : ${tarifas}" th:value="${tarifa.codigo}" th:text="${tarifa.valor}">3</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<button class="btn  btn-primary" type="submit">Salvar</button>
+			</div>
+	
+		</form>
+	</div>
+	
+</section>
+
+<th:block layout:fragment="javascript-extra">
+
+	
+</th:block>
+	
+</body>
+</html>
