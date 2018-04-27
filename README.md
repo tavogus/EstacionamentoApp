@@ -34,5 +34,6 @@ Funcionalidades implementadas até agora:
 ### Falta Fazer ###
 
 - Ajustes css tabelas das telas de pesquisa
-- paginas de erro
-- retirar H2 e botar Mysql
+- Paginas de erro
+- Retirar H2 e botar Mysql
+- Tela de gráficos
