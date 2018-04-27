@@ -66,7 +66,6 @@ public class MovimentacoesController {
 	@PostMapping("/fechar")
 	public ModelAndView fechar(Movimentacao movimentacao) {
 		cadastroMovimentacaoService.fechar(movimentacao);
-		/*return new ModelAndView("redirect:/movimentacoes");*/
 		 Movimentacao movimentacaoFechada = cadastroMovimentacaoService.fechar(movimentacao);
 		return fecharMv(movimentacaoFechada);
 		
