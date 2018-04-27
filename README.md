@@ -33,6 +33,8 @@ Funcionalidades implementadas até agora:
 
 ### Falta Fazer ###
 
+- Anotação no campo placa para aceitar somente padrão
+- Mascara de data Hora no campo saida da tela fechamento
 - Ajustes css tabelas das telas de pesquisa
 - Paginas de erro
 - Retirar H2 e botar Mysql
