@@ -38,7 +38,8 @@ public class CadastroMovimentacaoService {
 
 		long diferencaHoras = ChronoUnit.HOURS.between(entrada, saida);
 		long valorTotal = (valorTarifa.longValue() * diferencaHoras);
-
+        
+		movimentacaoExistente.setDataHoraSaida(saida);
 		movimentacaoExistente.setTotal(valorTotal);
 		movimentacaoExistente.setStatus(StatusMovimentacao.FECHADA);
 		return salvar(movimentacaoExistente);
