@@ -47,9 +47,11 @@ public class MovimentacoesImpl implements MovimentacoesQueries{
 	}
 
 	private void adicionarFiltro(MovimentacaoFilter filtro, Criteria criteria) {
+		criteria.createAlias("veiculo", "v");
+		
 		if (filtro != null) {
 			if (!StringUtils.isEmpty(filtro.getVeiculo())) {
-				criteria.add(Restrictions.ilike("veiculo", filtro.getVeiculo(), MatchMode.ANYWHERE));
+				criteria.add(Restrictions.ilike("v.placa", filtro.getVeiculo(), MatchMode.ANYWHERE));
 			}
 
 		}
