@@ -6,8 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.estacionamento.validation.PLACA;
 
 @Entity
 public class Veiculo {
@@ -16,6 +20,7 @@ public class Veiculo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
+	@PLACA
 	@NotBlank(message = "placa é obrigatório")
 	private String placa;
 	
@@ -26,6 +31,12 @@ public class Veiculo {
 	@JoinColumn(name = "tarifa")
     private Tarifa tarifa;
 
+	@PrePersist
+	@PreUpdate
+	private void prePersistUpdate() {
+		placa = placa.toUpperCase();
+	}
+	
 	public Long getCodigo() {
 		return codigo;
 	}

@@ -37,6 +37,20 @@ Estacionamento.MaskDate = (function() {
 	
 }());
 
+Estacionamento.MaskPlaca = (function() {
+	
+	function MaskPlaca() {
+		this.inputPlaca = $('#placa');
+	}
+	
+	MaskPlaca.prototype.enable = function() {
+		this.inputPlaca.inputmask({mask: 'AAA-9999'});
+	}
+	
+	return MaskPlaca;
+	
+}());
+
 numeral.language('pt-br');
 
 Estacionamento.formatarMoeda = function(valor) {
@@ -53,4 +67,7 @@ $(function() {
 	
 	var maskDate = new Estacionamento.MaskDate();
 	maskDate.enable();	
+	
+	var maskPlaca = new Estacionamento.MaskPlaca();
+	maskPlaca.enable();
 });
