@@ -78,4 +78,7 @@ public class Movimentacao {
 		return codigo == null;
 	}
 
+	public boolean isFecharPermitido() {
+		return !status.equals(StatusMovimentacao.FECHADA);
+	}
 }

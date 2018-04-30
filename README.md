@@ -37,3 +37,4 @@ Funcionalidades implementadas até agora:
 - Ajustes css tabelas das telas de pesquisa
 - Retirar H2 e botar Mysql
 - Tela de gráficos
+- Emissão de relatoios de movimentações fechadas

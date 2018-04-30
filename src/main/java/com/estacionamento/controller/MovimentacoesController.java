@@ -48,7 +48,7 @@ public class MovimentacoesController {
 	}
 	
 	@GetMapping
-	public ModelAndView pesquisar(MovimentacaoFilter movimentacaoFilter, BindingResult result, @PageableDefault(size = 2) Pageable pageable, HttpServletRequest httpServletRequest) {
+	public ModelAndView pesquisar(MovimentacaoFilter movimentacaoFilter, BindingResult result, @PageableDefault(size = 5) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("movimentacao/PesquisaMovimentacao");
 		
 		PageWrapper<Movimentacao> paginaWrapper = new PageWrapper<>(movimentacoes.filtrar(movimentacaoFilter, pageable), httpServletRequest);
