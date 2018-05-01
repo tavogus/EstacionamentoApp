@@ -2,6 +2,7 @@ package com.estacionamento.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,9 +18,11 @@ public class Movimentacao {
 
 	@OneToOne
 	private Veiculo veiculo;
-
+    
+	@Column(name = "data_hora_entrada")
 	private LocalDateTime dataHoraEntrada;
-
+    
+	@Column(name = "data_hora_saida")
 	private LocalDateTime dataHoraSaida;
 
 	private long total = 0;
@@ -80,5 +83,9 @@ public class Movimentacao {
 
 	public boolean isFecharPermitido() {
 		return !status.equals(StatusMovimentacao.FECHADA);
+	}
+	
+	public boolean isFechada() {
+		return !status.equals(StatusMovimentacao.ORCAMENTO);
 	}
 }

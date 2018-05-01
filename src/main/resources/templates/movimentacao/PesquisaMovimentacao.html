@@ -61,7 +61,14 @@
 						<td th:text="${{movimentacao.dataHoraEntrada}}">15/08/1993</td>
 						<td th:text="${{movimentacao.dataHoraSaida}}">15/08/1993</td>
 						<td th:text="|R$ ${{movimentacao.total}}|"></td>
-						<td th:text="${movimentacao.status.descricao}"></td>
+						<td>
+							<th:block th:if="${not movimentacao.fechada}">
+								<span class="label  label-success">Orçamento</span>
+							</th:block>
+							<th:block th:if="${movimentacao.fechada}">
+								<span class="label  label-danger">Fechada</span>
+							</th:block>
+						</td>
 						<td class="text-center">
 							<a class="btn  btn-link  btn-xs  js-tooltip" title="Fechar"
 					           th:if="${movimentacao.fecharPermitido}"

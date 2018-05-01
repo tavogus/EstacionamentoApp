@@ -23,7 +23,7 @@ public class CadastroMovimentacaoService {
 		if (movimentacao.isNova()) {
 			movimentacao.setDataHoraEntrada(LocalDateTime.now());
 		}else {
-			Movimentacao movimentacaoExistente = movimentacoes.findOne(movimentacao.getCodigo());
+			Movimentacao movimentacaoExistente = movimentacoes.getOne(movimentacao.getCodigo());
 			movimentacao.setDataHoraEntrada(movimentacaoExistente.getDataHoraEntrada());
 		}
 		return movimentacoes.saveAndFlush(movimentacao);
@@ -31,7 +31,7 @@ public class CadastroMovimentacaoService {
 
 	@Transactional
 	public Movimentacao fechar(Movimentacao movimentacao) {
-		Movimentacao movimentacaoExistente = movimentacoes.findOne(movimentacao.getCodigo());
+		Movimentacao movimentacaoExistente = movimentacoes.getOne(movimentacao.getCodigo());
 		LocalDateTime entrada = movimentacaoExistente.getDataHoraEntrada();
 		LocalDateTime saida = movimentacao.getDataHoraSaida();
 		BigDecimal valorTarifa = movimentacaoExistente.getVeiculo().getTarifa().getValor();

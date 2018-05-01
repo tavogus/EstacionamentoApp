@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:brewer="http://brewer.algaworks.com">
+	xmlns:estacionamento="http://brewer.algaworks.com">
 	
 <body>
 <aside class="aw-layout-sidebar  js-sidebar" th:fragment="layout-sidebar">
@@ -10,7 +10,7 @@
     	<nav class="aw-menu  js-menu">
       		<ul class="aw-menu__list">
 
-        		<li class="aw-menu__item" brewer:menu="@{/}">
+        		<li class="aw-menu__item" estacionamento:menu="@{/}">
           			<a th:href="@{/}"><i class="fa  fa-fw  fa-home"></i><span>Dashboard</span></a>
         		</li>
         		
@@ -21,11 +21,11 @@
           			</a>
       
           			<ul class="aw-menu__list  aw-menu__list--sublist">
-			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/movimentacoes.+}">
+			            <li class="aw-menu__item  aw-menu__item--link" estacionamento:menu="@{/movimentacoes.+}">
 			            	<a th:href="@{/movimentacoes/novo}">Cadastro Movimentação</a>
 			            </li>
 			            
-			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/movimentacoes}">
+			            <li class="aw-menu__item  aw-menu__item--link" estacionamento:menu="@{/movimentacoes}">
 			            	<a th:href="@{/movimentacoes}">Pesquisa Movimentações</a>
 			            </li>
 			        </ul>
@@ -38,10 +38,10 @@
           			</a>
 
           			<ul class="aw-menu__list  aw-menu__list--sublist">
-			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/tarifas.*}">
+			            <li class="aw-menu__item  aw-menu__item--link" estacionamento:menu="@{/tarifas.*}">
 			            	<a th:href="@{/tarifas}">Tarifas</a>
 			            </li>
-			            <li class="aw-menu__item  aw-menu__item--link" brewer:menu="@{/veiculos.*}">
+			            <li class="aw-menu__item  aw-menu__item--link" estacionamento:menu="@{/veiculos.*}">
 			            	<a th:href="@{/veiculos}">Veiculos</a>
 			            </li>
           			</ul>

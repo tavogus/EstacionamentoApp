@@ -35,6 +35,6 @@ Funcionalidades implementadas até agora:
 
 - Mascara de data Hora no campo saida da tela fechamento
 - Ajustes css tabelas das telas de pesquisa
-- Retirar H2 e botar Mysql
+- Segurança com spring security
 - Tela de gráficos
 - Emissão de relatoios de movimentações fechadas
