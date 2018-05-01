@@ -57,7 +57,7 @@
 					<div class="bw-field-action">
 						<select id="tarifa" class="form-control" th:field="*{tarifa}">
 							<option value="">Selecione a tarifa</option>
-							<option th:each="tarifa : ${tarifas}" th:value="${tarifa.codigo}" th:text="${tarifa.valor}">3</option>
+							<option th:each="tarifa : ${tarifas}" th:value="${tarifa.codigo}" th:text="${tarifa.descricao + ' - ' + tarifa.valor}">3</option>
 						</select>
 					</div>
 				</div>
