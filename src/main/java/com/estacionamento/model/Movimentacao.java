@@ -7,7 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
 
 @Entity
 public class Movimentacao {
@@ -24,6 +27,10 @@ public class Movimentacao {
     
 	@Column(name = "data_hora_saida")
 	private LocalDateTime dataHoraSaida;
+	
+	@ManyToOne
+	@JoinColumn(name = "codigo_usuario")
+	private Usuario usuario;
 
 	private long total = 0;
 
@@ -75,6 +82,16 @@ public class Movimentacao {
 
 	public void setStatus(StatusMovimentacao status) {
 		this.status = status;
+	}
+	
+	
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public boolean isNova() {

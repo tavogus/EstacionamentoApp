@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import com.estacionamento.controller.page.PageWrapper;
 import com.estacionamento.model.Movimentacao;
 import com.estacionamento.repository.Movimentacoes;
 import com.estacionamento.repository.filter.MovimentacaoFilter;
+import com.estacionamento.security.UsuarioSistema;
 import com.estacionamento.service.CadastroMovimentacaoService;
 
 @Controller
@@ -37,10 +40,12 @@ public class MovimentacoesController {
 	}
 	
 	@PostMapping("/novo")
-	public ModelAndView cadastrar(@Valid Movimentacao movimentacao, BindingResult result, RedirectAttributes attributes) {
+	public ModelAndView cadastrar(@Valid Movimentacao movimentacao, BindingResult result, RedirectAttributes attributes,@AuthenticationPrincipal UsuarioSistema usuarioSistema) {
 		if (result.hasErrors()) {
 			return novo(movimentacao);
 		}
+		movimentacao.setUsuario(usuarioSistema.getUsuario());
+		
 		cadastroMovimentacaoService.salvar(movimentacao);
 
 		attributes.addFlashAttribute("mensagem", "Movimentacao salva com sucesso");

@@ -49,6 +49,7 @@
 						</th>
 						<th>Data Hora entrada</th>
 						<th>Data Hora saida</th>
+						<th>Usuário</th>
 						<th>Valor total</th>
 						<th>Status</th>
 						<th class="table-cervejas-col-acoes"></th>
@@ -60,6 +61,7 @@
 						<td class="text-center" th:text="${movimentacao.veiculo.placa}">olw7263</td>
 						<td th:text="${{movimentacao.dataHoraEntrada}}">15/08/1993</td>
 						<td th:text="${{movimentacao.dataHoraSaida}}">15/08/1993</td>
+						<td th:text="${movimentacao.usuario.nome}">15/08/1993</td>
 						<td th:text="|R$ ${{movimentacao.total}}|"></td>
 						<td>
 							<th:block th:if="${not movimentacao.fechada}">
