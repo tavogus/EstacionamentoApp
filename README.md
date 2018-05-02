@@ -33,6 +33,7 @@ Funcionalidades implementadas até agora:
 ### Tecnologias agora usadas ###
 - Spring boot
 - Spring data jpa
+- Spring security
 - Thymeleaf
 - bootstrap
 
