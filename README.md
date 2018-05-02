@@ -7,6 +7,11 @@ Atualização,modernização e melhoria do projeto estacionamento feito na facul
 
 Funcionalidades implementadas até agora:
 
+- **Usuarios**
+  - Cadastro
+  - Pesquisa
+  - Ativação/Desativação
+
 - **Tarifas**
   - Cadastro 
   - Pesquisa
@@ -35,6 +40,5 @@ Funcionalidades implementadas até agora:
 
 - Mascara de data Hora no campo saida da tela fechamento
 - Ajustes css tabelas das telas de pesquisa
-- Segurança com spring security
 - Tela de gráficos
 - Emissão de relatoios de movimentações fechadas
