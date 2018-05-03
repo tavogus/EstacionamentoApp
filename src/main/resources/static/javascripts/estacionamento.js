@@ -18,25 +18,6 @@ Estacionamento.MaskMoney = (function() {
 	
 }());
 
-Estacionamento.MaskDate = (function() {
-	
-	function MaskDate() {
-		this.inputDate = $('.js-date');
-	}
-	
-	MaskDate.prototype.enable = function() {
-		this.inputDate.mask('00/00/0000');
-		this.inputDate.datepicker({
-			orientation: 'bottom',
-			language: 'pt-BR',
-			autoclose: true
-		});
-	}
-	
-	return MaskDate;
-	
-}());
-
 Estacionamento.MaskPlaca = (function() {
 	
 	function MaskPlaca() {
@@ -50,6 +31,36 @@ Estacionamento.MaskPlaca = (function() {
 	return MaskPlaca;
 	
 }());
+
+Estacionamento.MaskDate = (function() {
+	
+	function MaskDate() {
+		this.inputDate = $('.js-date');
+	}
+	
+	MaskDate.prototype.enable = function() {
+		this.inputDate.mask('00/00/0000 00:00');
+	}
+	
+	return MaskDate;
+	
+}());
+
+Estacionamento.Security = (function() {
+	
+	function Security() {
+		this.token = $('input[name=_csrf]').val();
+		this.header = $('input[name=_csrf_header]').val();
+	}
+	
+	Security.prototype.enable = function() {
+		$(document).ajaxSend(function(event, jqxhr, settings) {
+			jqxhr.setRequestHeader(this.header, this.token);
+		}.bind(this));
+	}
+	
+	return Security;
+}());	
 
 numeral.language('pt-br');
 
@@ -65,9 +76,12 @@ $(function() {
 	var maskMoney = new Estacionamento.MaskMoney();
 	maskMoney.enable();
 	
-	var maskDate = new Estacionamento.MaskDate();
-	maskDate.enable();	
-	
 	var maskPlaca = new Estacionamento.MaskPlaca();
 	maskPlaca.enable();
+	
+	var maskDate = new Estacionamento.MaskDate();
+	maskDate.enable();
+	
+	var security = new Estacionamento.Security();
+	security.enable();
 });
