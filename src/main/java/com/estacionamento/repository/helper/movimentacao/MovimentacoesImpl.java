@@ -53,6 +53,9 @@ public class MovimentacoesImpl implements MovimentacoesQueries{
 			if (!StringUtils.isEmpty(filtro.getVeiculo())) {
 				criteria.add(Restrictions.ilike("v.placa", filtro.getVeiculo(), MatchMode.ANYWHERE));
 			}
+			if (filtro.getStatus() != null) {
+				criteria.add(Restrictions.eq("status", filtro.getStatus()));
+			}
 
 		}
 	}

@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.estacionamento.controller.page.PageWrapper;
 import com.estacionamento.controller.validator.MovimentacaoValidator;
 import com.estacionamento.model.Movimentacao;
+import com.estacionamento.model.StatusMovimentacao;
 import com.estacionamento.repository.Movimentacoes;
 import com.estacionamento.repository.filter.MovimentacaoFilter;
 import com.estacionamento.security.UsuarioSistema;
@@ -44,8 +45,7 @@ public class MovimentacoesController {
 	}
 
 	@PostMapping("/novo")
-	public ModelAndView cadastrar(Movimentacao movimentacao, BindingResult result, RedirectAttributes attributes,
-			@AuthenticationPrincipal UsuarioSistema usuarioSistema) {
+	public ModelAndView cadastrar(Movimentacao movimentacao, BindingResult result, RedirectAttributes attributes,@AuthenticationPrincipal UsuarioSistema usuarioSistema) {
 		validarMovimentacao(movimentacao, result);
 		if (result.hasErrors()) {
 			return novo(movimentacao);
@@ -59,12 +59,10 @@ public class MovimentacoesController {
 	}
 
 	@GetMapping
-	public ModelAndView pesquisar(MovimentacaoFilter movimentacaoFilter, @PageableDefault(size = 5) Pageable pageable,
-			HttpServletRequest httpServletRequest) {
+	public ModelAndView pesquisar(MovimentacaoFilter movimentacaoFilter, @PageableDefault(size = 10) Pageable pageable,HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("movimentacao/PesquisaMovimentacao");
-
-		PageWrapper<Movimentacao> paginaWrapper = new PageWrapper<>(movimentacoes.filtrar(movimentacaoFilter, pageable),
-				httpServletRequest);
+		mv.addObject("todosStatus", StatusMovimentacao.values());
+		PageWrapper<Movimentacao> paginaWrapper = new PageWrapper<>(movimentacoes.filtrar(movimentacaoFilter, pageable),httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}

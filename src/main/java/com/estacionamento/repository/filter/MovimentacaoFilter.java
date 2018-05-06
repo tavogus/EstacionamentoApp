@@ -2,10 +2,14 @@ package com.estacionamento.repository.filter;
 
 import java.time.LocalDateTime;
 
+import com.estacionamento.model.StatusMovimentacao;
+
 public class MovimentacaoFilter {
 
     private String veiculo;
-	
+    
+    private StatusMovimentacao status;
+
 	private LocalDateTime dataEntrada;
 	
 	private LocalDateTime dataSaida;
@@ -33,6 +37,15 @@ public class MovimentacaoFilter {
 	public void setDataSaida(LocalDateTime dataSaida) {
 		this.dataSaida = dataSaida;
 	}
+	
+	public StatusMovimentacao getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusMovimentacao status) {
+		this.status = status;
+	}
+
 	
 	
 }

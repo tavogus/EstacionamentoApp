@@ -39,7 +39,6 @@ Funcionalidades implementadas até agora:
 
 ### Falta Fazer ###
 
-- Mascara de data Hora no campo saida da tela fechamento
 - Ajustes css tabelas das telas de pesquisa
 - Tela de gráficos
 - Emissão de relatoios de movimentações fechadas
